@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obituary List</title>
+    <meta name="description" content="View obituaries and share memories.">
+    <meta name="keywords" content="obituary, memorial, death notice">
+    <meta property="og:title" content="Obituary List">
+    <meta property="og:description" content="View obituaries and share memories.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://yourwebsite.com/view_obituaries">
+    <meta property="og:image" content="http://yourwebsite.com/static/images/obituary.jpg">
+    <link rel="canonical" href="http://yourwebsite.com/view_obituaries">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Obituary List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Date of Birth</th>
+                <th>Date of Death</th>
+                <th>Content</th>
+                <th>Author</th>
+                <th>Submission Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obituary in obituaries %}
+            <tr itemscope itemtype="https://schema.org/Person">
+                <td>{{ obituary[0] }}</td>
+                <td itemprop="name">{{ obituary[1] }}</td>
+                <td itemprop="birthDate">{{ obituary[2] }}</td>
+                <td itemprop="deathDate">{{ obituary[3] }}</td>
+                <td itemprop="description">{{ obituary[4] }}</td>
+                <td>{{ obituary[5] }}</td>
+                <td>{{ obituary[6] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <a href="https://www.facebook.com/sharer/sharer.php?u=http://yourwebsite.com/view_obituaries" target="_blank">Share on Facebook</a><br><br>
+        <a href="https://twitter.com/intent/tweet?url=http://yourwebsite.com/view_obituaries&text=Check out this obituary list" target="_blank">Share on Twitter</a><br><br>
+    </div>
+    <a href="/">Submit another obituary</a><br>
+    
+</body>
+</html>
